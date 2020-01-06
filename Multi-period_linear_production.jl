@@ -15,31 +15,42 @@ T=4
 revenue=zeros(2,4,3)
 
 ##First scenario
-revenue[:,:,1]=[25 26 27 27;30 35 37 39]
+revenue[:,:,1]=[25 26 27 27;
+                30 35 37 39]
 
 ##Second scenario
-revenue[:,:,2]=[23 24 25 25;30 33 35 36]
+revenue[:,:,2]=[23 24 25 25;
+                30 33 35 36]
 
 ##Third scenario
-revenue[:,:,3]=[21 27 33 35;30 32 33 33]
+revenue[:,:,3]=[21 27 33 35;
+                30 32 33 33]
 
 ##The cost of production for each product.  In this example they are bands and coils
-prodcost=[10;11]
+prodcost=[10;
+          11]
 
 ##The initial inventory in tons of each product
-inv0=[10;0]
+inv0=[10;
+       0]
 
 ##The cost of keeping inventory per ton for each time period(week)
-invcost=[2.5;3]
+invcost=[2.5;
+           3]
 
 ##Tons per hour able to be produced
-rate=[200;140]
+rate=[200;
+      140]
 
 ##The time available(hours) for each time period(week)
-avail=[40;40;32;40]
+avail=[40;
+       40;
+       32;
+       40]
 
 ##The limit in tons able to be sold per week
-market=[6000 6000 4000 6500;4000 2500 3500 4200]
+market=[6000 6000 4000 6500;
+        4000 2500 3500 4200]
 
 ##The tensor to hold the same market amounts to be applied to each revenue scenario
 Markets=zeros(2,4,3)
@@ -71,7 +82,9 @@ end
              for p in 1:2)<=avail[t])
 
 ##The likelyhood of choosing which scenario will be or look the best to the company
-prob=[.45;.35;.2]
+prob=[.45;
+      .35;
+       .2]
 
 ##Finding the maximum profit across all the scenarios
 @objective(M,Max,sum(sum(revenue[p,t,s]*Sell[p,t,s]-prodcost[p]*Make[p,t,s]
